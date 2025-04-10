@@ -1,0 +1,13 @@
+FROM ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest
+
+# Install additional dependencies
+RUN pip install fastapi uvicorn
+
+# Copy our agent code
+COPY computer_agent.py /home/computeruse/computer_agent.py
+
+# Expose the API port
+EXPOSE 8000
+
+# Set the entrypoint to run our agent server
+ENTRYPOINT ["python3", "/home/computeruse/computer_agent.py"] 
